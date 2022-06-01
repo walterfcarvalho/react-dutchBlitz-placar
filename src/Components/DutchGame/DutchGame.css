@@ -1,0 +1,21 @@
+
+body{
+  background-color: grey;
+  padding: 1px;
+}
+
+.DuchContainer {
+  display:flex;
+  flex-direction: column;
+  background-color: white;
+  width: 90%;
+  height: 90%;
+  position: absolute;
+}
+
+.inicio {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+  width: 90%;
+}

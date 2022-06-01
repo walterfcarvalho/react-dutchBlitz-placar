@@ -1,0 +1,80 @@
+.dutchCard {
+  display:flex;
+  justify-content: center;
+  align-items: stretch;
+  margin: 10px;
+  display:flex;
+  padding: 5px;
+  border: 1px solid;
+  border-color: black;
+  border-radius: 10px;
+  width: 90%;
+  height: 15%;
+}
+
+/* .red {
+  background-color: #ed7d64;
+}
+
+.blue {
+  background-color: blue; 
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.green{
+  background-color: green;
+} */
+
+.scores{
+  display:flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+img{
+  width: 20%;
+}
+
+input{
+  color:black;
+  font-size: larger;
+  text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+span {
+  font-size: small;
+}
+
+.scorehistory {
+  display: flex;
+  align-items: flex-start ;
+  justify-content: center;
+  align-content: center;
+  border: 1px solid;
+  border-color: black;
+  border-radius: 10px;
+  width: 40%;
+  height: 100%;
+  margin-right: 5px;
+}
+
+.total {
+  display: flex;
+  align-items: center ;
+  justify-content: center;
+  border: 1px solid;
+  border-color: black;
+  width: 40%;
+  border-radius: 10px;
+  width: 50%;
+  height: 100%;
+}
