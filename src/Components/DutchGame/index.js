@@ -69,7 +69,7 @@ const DutchGame = () => {
     <div className="DuchContainer">
 
       <div className='topo'>
-        <h3>Dutch Blitz</h3>
+        <h3>Dutch Blitz Placar</h3>
         <input className="btn btn-light btn-sm button-topo" type="submit" value="New" onClick={newGame} />
       </div>
 
