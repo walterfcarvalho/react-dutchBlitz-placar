@@ -16,6 +16,7 @@ const DutchGame = () => {
 
   const cores = ['green', 'red', 'yellow', 'blue']
 
+
   function handleScore(event) {
     event.preventDefault()
 
@@ -86,7 +87,7 @@ const DutchGame = () => {
           <DutchCard logo="dutchCardBlue" color="blue" score={state['blue']} handleChange={handleChange} isEndGame={state.endGame} />
           
           <div className="topo baixo">
-            <input type="submit" value="Count" />
+            <input className="btn btn-light btn-sm" type="submit" value="Count" />
           </div>
         </div>
 

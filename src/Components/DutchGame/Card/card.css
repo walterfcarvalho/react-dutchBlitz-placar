@@ -17,12 +17,19 @@ img{
   border-radius: 10px;
 }
 
+imgwinner {
+  max-width: 100px !important;
+  border-radius: 10px;  
+}
+
+
+
 .bpdp{
   color:black;
   font-size: xx-large;
   text-align: center;
   margin: 5px;
-  background-color: gray !important;
+  background-color: #cccccc !important;
 }
 
 input::-webkit-outer-spin-button,

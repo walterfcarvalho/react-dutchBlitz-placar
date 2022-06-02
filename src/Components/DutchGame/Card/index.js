@@ -34,7 +34,7 @@ const DutchCard = ({ logo, color, score, handleChange, isEndGame }) => {
 
 
         <div>
-          {score.winner ? <img src={require(`./../../../images/crown.png`)} alt="winner" /> : null}
+          {score.winner ? <img className='imgwinner' src={require(`./../../../images/crown.png`)} alt="winner" /> : null}
         </div>
 
 
