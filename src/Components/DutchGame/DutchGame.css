@@ -1,16 +1,7 @@
 
-body{
-  background-color: grey;
-  padding: 1px;
-}
-
 .DuchContainer {
   display:flex;
   flex-direction: column;
-  background-color: white;
-  width: 90%;
-  height: 90%;
-  position: absolute;
 }
 
 .inicio {
@@ -18,4 +9,34 @@ body{
   justify-content: space-between;
   margin: 5px;
   width: 90%;
+}
+
+form {
+  margin:0px;
+  padding: 0px;
+  height: 90%;
+}
+
+.topo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: green;
+}
+
+.baixo {
+  justify-content: flex-end;
+}
+
+.topo h3 {
+  margin: 0px;
+  margin-left: 5px;
+  padding: 5px;
+  color: yellow;
+}
+
+.topo input {
+  margin: 5px;
+  width: 78px !important;
 }
