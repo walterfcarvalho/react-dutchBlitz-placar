@@ -7,7 +7,7 @@ const DutchGame = () => {
   const itemPlacar = {
     bp: "",
     dp: "",
-    score: 0,
+    score: "",
     history: "",
     winner: false
   }
@@ -91,7 +91,7 @@ const DutchGame = () => {
           </div>
         </div>
 
-        <a href= "https://www.wikihow.com/Play-Dutch-Blitz" target="_blank">
+        <a href= "https://www.wikihow.com/Play-Dutch-Blitz" rel="noreferrer" target="_blank">
           Wikihow Dutch Blitz
         </a>
 

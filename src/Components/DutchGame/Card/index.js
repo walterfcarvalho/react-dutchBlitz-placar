@@ -1,16 +1,12 @@
 import './card.css'
-
+import Input from './Input'
 
 const DutchCard = ({ logo, color, score, handleChange, isEndGame }) => {
-
-  function colapse(e){
-    console.log( 'ok')
-  }
 
   return (
     <div className={`dutchCard`}>
 
-        <div className="accordion-item" onBlur={colapse} >
+        <div className="accordion-item">
           <h2 className="accordion-header" id={`head${color}`}>
             <button className={`accordion-button collapsed ${color}`} type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${color}`} aria-expanded="true" aria-controls={`collapse${color}`}>
 
@@ -19,9 +15,13 @@ const DutchCard = ({ logo, color, score, handleChange, isEndGame }) => {
               </div>
 
               <div className="scores">
-                <input min={0} max={99} className={`${color} bpdp`} id={`${color}-bp`} type="number" value={score.bp} onChange={handleChange} disabled={isEndGame} />
-                <input min={0} max={99} className={`${color} bpdp`} id={`${color}-dp`} type="number" value={score.dp} onChange={handleChange} disabled={isEndGame} />
-                <input min={0} max={99} className={`${color} bpdp`} id={`${color}-dp`} type="number" value={score.score}  />
+
+                <Input inputLabel={"+"} tpOp={"bp"} color={color} score={score.bp} handleChange={handleChange} isDisabled={isEndGame} />
+     
+                <Input inputLabel={"-"} tpOp={"dp"} color={color} score={score.dp} handleChange={handleChange} isDisabled={isEndGame} />
+
+                <Input inputLabel={"Total"} tpOp={""} color={color} score={score.score} handleChange={handleChange} isDisabled={true} />
+
               </div>
             </button>
           </h2>
@@ -32,10 +32,7 @@ const DutchCard = ({ logo, color, score, handleChange, isEndGame }) => {
           </div>
         </div>
 
-
-        <div>
-          {score.winner ? <img className='imgwinner' src={require(`./../../../images/crown.png`)} alt="winner" /> : null}
-        </div>
+        {score.winner ? <img className='imgwinner' src={require(`./../../../images/crown.png`)} alt="winner" /> : null}
 
 
     </div>
