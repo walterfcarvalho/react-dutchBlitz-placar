@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './Components/DutchGame'
-import DutchGame from './Components/DutchGame';
+import DutchGame from './components/DutchGame';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

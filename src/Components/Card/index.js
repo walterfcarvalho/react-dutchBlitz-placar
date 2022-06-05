@@ -11,7 +11,7 @@ const DutchCard = ({ logo, color, score, handleChange, isEndGame }) => {
             <button className={`accordion-button collapsed ${color}`} type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${color}`} aria-expanded="true" aria-controls={`collapse${color}`}>
 
               <div className="imagem">
-                <img src={require(`./../../../images/${logo}.png`)} alt="descricao" />
+                <img src={require(`./../../images/${logo}.png`)} alt="descricao" />
               </div>
 
               <div className="scores">
@@ -32,8 +32,8 @@ const DutchCard = ({ logo, color, score, handleChange, isEndGame }) => {
           </div>
         </div>
 
-        {score.winner ? <img className='imgwinner' src={require(`./../../../images/crown.png`)} alt="winner" /> : null}
-
+        
+        {score.winner ? <img className='imgwinner' src={require(`./../../images/crown.png`)} alt="winner" /> : null}
 
     </div>
 

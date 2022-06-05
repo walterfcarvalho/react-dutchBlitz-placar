@@ -1,5 +1,7 @@
+
 import React, { useState } from 'react'
-import DutchCard from './Card'
+import DutchCard from '../Card'
+
 import './DutchGame.css'
 
 const DutchGame = () => {
@@ -7,15 +9,14 @@ const DutchGame = () => {
   const itemPlacar = {
     bp: "",
     dp: "",
-    score: "",
+    score: 0,
     history: "",
     winner: false
   }
-
+  
   const [state, setState] = useState({ red: { ...itemPlacar }, green: { ...itemPlacar }, yellow: { ...itemPlacar }, blue: { ...itemPlacar }, round: 1, endGame: false })
 
   const cores = ['green', 'red', 'yellow', 'blue']
-
 
   function handleScore(event) {
     event.preventDefault()
@@ -31,7 +32,7 @@ const DutchGame = () => {
     }
 
     cores.forEach(cor => {
-      valor[cor].score += valor[cor].bp - valor[cor].dp
+      valor[cor].score += parseInt(valor[cor].bp) - parseInt(valor[cor].dp)
       valor[cor].history = valor[cor].history.concat(`(+${valor[cor].bp}-${valor[cor].dp})`)
       valor[cor].bp = ""
       valor[cor].dp = ""
@@ -68,8 +69,10 @@ const DutchGame = () => {
   return (
     <div className="DuchContainer">
 
+
       <div className='topo'>
         <h3>Dutch Blitz Placar</h3>
+          
         <input className="btn btn-light btn-sm button-topo" type="submit" value="New" onClick={newGame} />
       </div>
 
@@ -77,6 +80,7 @@ const DutchGame = () => {
       <div className='inicio'>
         <span>Round : {state.round}</span>
       </div>
+
 
       <form onSubmit={handleScore} id="form">
         <div className="accordion" id={"head"}>
@@ -96,6 +100,8 @@ const DutchGame = () => {
         </a>
 
       </form>
+
+
     </div>
   )
 }
