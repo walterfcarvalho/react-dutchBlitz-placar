@@ -1,7 +1,9 @@
+
 .dutchCard {
   display:flex;
   justify-content: center;
-  padding: 5px !important;
+  padding: .5px !important;
+  margin: 0px !important;
 }
 
 .scores{
@@ -23,14 +25,6 @@ img{
   margin: 10px;
 }
 
-.bpdp{
-  color:black;
-  font-size: xx-large;
-  text-align: center;
-  margin: 5px;
-  background-color: #cccccc !important;
-}
-
 .red {
   background-color: #ed7d64;
 }
@@ -46,3 +40,7 @@ img{
 .green{
   background-color: green;
 } 
+
+.accordion-button{
+  padding: 5px;
+}

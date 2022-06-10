@@ -1,31 +1,30 @@
 import './card.css'
 import Input from './Input'
 
-const DutchCard = ({ logo, color, score, handleChange, isEndGame }) => {
+const DutchCard = ({ cor, score, handleChange, isEndGame, chave }) => {
 
-  return (
-    <div className={`dutchCard`}>
+  return <div className={`dutchCard`}>
 
-        <div className="accordion-item">
-          <h2 className="accordion-header" id={`head${color}`}>
-            <button className={`accordion-button collapsed ${color}`} type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${color}`} aria-expanded="true" aria-controls={`collapse${color}`}>
+        <div className="accordion-item" hidden={!cor.enabled}   >
+          <h2 className="accordion-header" id={`head${cor.nome}`}>
+            <button className={`accordion-button collapsed ${cor.nome} acbt${cor.nome}`} type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${cor.nome}`} aria-expanded="true" aria-controls={`collapse${cor.nome}`}>
 
               <div className="imagem">
-                <img src={require(`./../../images/${logo}.png`)} alt="descricao" />
+                <img src={require(`./../../images/dutchCard${cor.nome}.png`)} alt="descricao" />
               </div>
 
               <div className="scores">
 
-                <Input inputLabel={"+"} tpOp={"bp"} color={color} score={score.bp} handleChange={handleChange} isDisabled={isEndGame} />
+                <Input inputLabel={"+"} tpOp={"bp"} color={cor.nome} score={score.bp} handleChange={handleChange} isDisabled={isEndGame} />
      
-                <Input inputLabel={"-"} tpOp={"dp"} color={color} score={score.dp} handleChange={handleChange} isDisabled={isEndGame} />
+                <Input inputLabel={"-"} tpOp={"dp"} color={cor.nome} score={score.dp} handleChange={handleChange} isDisabled={isEndGame} />
 
-                <Input inputLabel={"Total"} tpOp={""} color={color} score={score.score} handleChange={handleChange} isDisabled={true} />
+                <Input inputLabel={"Total"} tpOp={""} color={cor.nome} score={score.score} handleChange={handleChange} isDisabled={true} />
 
               </div>
             </button>
           </h2>
-          <div id={`collapse${color}`} className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div id={`collapse${cor.nome}`} className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div className="accordion-body">
               <strong>History:</strong> {score.history}
             </div>
@@ -37,8 +36,6 @@ const DutchCard = ({ logo, color, score, handleChange, isEndGame }) => {
 
     </div>
 
-
-  )
 }
 
 export default DutchCard
