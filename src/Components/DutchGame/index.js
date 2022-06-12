@@ -28,7 +28,7 @@ const DutchGame = () => {
   function setParticipation(e, index) {
     const ischeck = e.target.checked
     
-    if (cores.filter(cor=> cor.enabled == true ).length === 2 && !ischeck  ){
+    if (cores.filter(cor=> cor.enabled === true ).length === 2 && !ischeck  ){
       window.alert('Should have two/three/four playes')
       return
     }
