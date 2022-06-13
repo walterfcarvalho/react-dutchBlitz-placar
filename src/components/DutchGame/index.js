@@ -1,20 +1,20 @@
 
 import React, { useState } from 'react'
 import DutchCard from '../Card'
-import PLayers  from '../Players'
+import PLayers from '../Players'
 import './DutchGame.css'
 
 const DutchGame = () => {
-  
+
   const coresBase = [
-    {nome:'yellow', enabled:true}, 
-    {nome:'red', enabled:true}, 
-    {nome:'green', enabled:true}, 
-    {nome:'blue', enabled:true}
+    { nome: 'yellow', enabled: true },
+    { nome: 'red', enabled: true },
+    { nome: 'green', enabled: true },
+    { nome: 'blue', enabled: true }
   ]
-  
+
   const itemPlacar = {
-    onGame:true,
+    onGame: true,
     bp: "",
     dp: "",
     score: 0,
@@ -22,21 +22,21 @@ const DutchGame = () => {
     winner: false
   }
 
-  const [state, setState] = useState({ red: { ...itemPlacar }, green: { ...itemPlacar }, yellow: { ...itemPlacar }, blue: { ...itemPlacar }, round: 1, endGame: false})
+  const [state, setState] = useState({ red: { ...itemPlacar }, green: { ...itemPlacar }, yellow: { ...itemPlacar }, blue: { ...itemPlacar }, round: 1, endGame: false })
   const [cores, setCores] = useState([...coresBase])
 
   function setParticipation(e, index) {
     const ischeck = e.target.checked
-    
-    if (cores.filter(cor=> cor.enabled === true ).length === 2 && !ischeck  ){
+
+    if (cores.filter(cor => cor.enabled === true).length === 2 && !ischeck) {
       window.alert('Should have two/three/four playes')
       return
     }
-    
+
     const aux = Object.assign([], cores)
 
     aux[index].enabled = ischeck
-    
+
     setCores(aux)
 
   }
@@ -48,7 +48,7 @@ const DutchGame = () => {
 
     let err = ""
 
-    cores.forEach(cor => ((valor[cor.nome].bp === "" || valor[cor.nome].dp === "") && cor.enabled ) ? err += `\r Pls fullfill ${cor} fields` : "")
+    cores.forEach(cor => ((valor[cor.nome].bp === "" || valor[cor.nome].dp === "") && cor.enabled) ? err += `\r Pls fullfill ${cor} fields` : "")
     if (err.length > 0) {
       window.alert(err)
       return
@@ -93,7 +93,7 @@ const DutchGame = () => {
     <div className="DuchContainer">
 
 
-      <div className='topo'>
+      <div className='formEdge'>
         <h3>Dutch Blitz Placar</h3>
 
         <input className="btn btn-light btn-sm button-topo" type="submit" value="New" onClick={newGame} />
@@ -103,39 +103,52 @@ const DutchGame = () => {
       <div className='inicio'>
         <span>Round: {state.round}</span>
 
-        <PLayers 
-          cores= {cores} 
+        <PLayers
+          cores={cores}
           handleCheck={setParticipation}
           round={state.round}
-        /> 
+        />
 
       </div>
 
       <form onSubmit={handleScore} id="form">
         <div className="accordion" id={"head"}>
 
-          { cores.map( (cor, index) => 
-            <div key ={index} >
-              <DutchCard 
-                cor = {cor}
-                score={state[cor.nome]} 
+          {cores.map((cor, index) =>
+            <div key={index} >
+              <DutchCard
+                cor={cor}
+                score={state[cor.nome]}
                 handleChange={handleChange}
-                isEndGame={state.endGame} 
+                isEndGame={state.endGame}
               />
             </div>
           )}
 
-          <div className="topo baixo">
+          <div className="formEdge">
             <input className="btn btn-light btn-sm" type="submit" value="Count" />
           </div>
 
         </div>
 
-        <a href="https://www.wikihow.com/Play-Dutch-Blitz" rel="noreferrer" target="_blank">
-          Wikihow Dutch Blitz
-        </a>
-
       </form>
+
+      <div className="formRodape">
+        <div>
+          <a className="link-dark" href="https://www.wikihow.com/Play-Dutch-Blitz" rel="noreferrer" target="_blank">
+            How to play?
+          </a>
+        </div>
+
+        <div className="imagem">
+            <img src={require(`./../../images/GitHub-Mark-32px.png`)} alt="descricao" />
+            <a className="link-dark" href="https://github.com/walterfcarvalho/react-dutchBlitza-placar" rel="noreferrer" target="_blank">
+              react-dutchBlitz-placar
+            </a>
+        </div>
+
+
+      </div>
 
 
     </div>

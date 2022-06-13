@@ -15,33 +15,36 @@ span {
   margin-right: 20px;
 }
 
-
 form {
   margin:0px;
   padding: 0px;
   height: 90%;
 }
 
-.topo {
+.formEdge {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: green;
 }
 
-.baixo {
-  justify-content: center;
+.formRodape {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  margin:10px;
 }
 
-.topo h3 {
+.formEdge h3 {
   margin: 0px;
   margin-left: 5px;
   padding: 5px;
   color: yellow;
 }
 
-.topo input {
+.formEdge input {
   margin: 5px;
   width: 78px !important;
 }
