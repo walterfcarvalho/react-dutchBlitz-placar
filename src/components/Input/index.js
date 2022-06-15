@@ -1,3 +1,4 @@
+import React from 'react'
 import './input.css'  
 
 const Input = ({color, score, handleChange, isDisabled, inputLabel, tpOp  }) => {

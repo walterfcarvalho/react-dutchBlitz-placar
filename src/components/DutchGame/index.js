@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import DutchCard from '../Card'
 import PLayers from '../Players'
+import AlertDismissible from '../AlertDismissible'
 import './DutchGame.css'
 
 const DutchGame = () => {
@@ -24,13 +25,16 @@ const DutchGame = () => {
 
   const [state, setState] = useState({ red: { ...itemPlacar }, green: { ...itemPlacar }, yellow: { ...itemPlacar }, blue: { ...itemPlacar }, round: 1, endGame: false })
   const [cores, setCores] = useState([...coresBase])
+  const [msgErro, setMsgErro] = useState({show:false, text: ""})
 
   function setParticipation(e, index) {
     const ischeck = e.target.checked
 
     if (cores.filter(cor => cor.enabled === true).length === 2 && !ischeck) {
-      window.alert('Should have two/three/four playes')
+      setMsgErro({show:true, text: 'Should have two/three/four playes'})
       return
+    } else {
+      setMsgErro({show:false, text: ''})
     }
 
     const aux = Object.assign([], cores)
@@ -48,10 +52,12 @@ const DutchGame = () => {
 
     let err = ""
 
-    cores.forEach(cor => ((valor[cor.nome].bp === "" || valor[cor.nome].dp === "") && cor.enabled) ? err += `\r Pls fullfill ${cor} fields` : "")
+    cores.forEach(cor => ((valor[cor.nome].bp === "" || valor[cor.nome].dp === "") && cor.enabled) ? err += `Fullfill ${cor.nome} fields. ` : "")
     if (err.length > 0) {
-      window.alert(err)
+      setMsgErro({show:true, text: err })
       return
+    } else {
+      setMsgErro({show:false, text: "" })
     }
 
     cores.forEach(cor => {
@@ -86,12 +92,10 @@ const DutchGame = () => {
     e.preventDefault()
 
     setState({ red: { ...itemPlacar }, green: { ...itemPlacar }, yellow: { ...itemPlacar }, blue: { ...itemPlacar }, round: 1, endGame: false })
-    console.log(state)
   }
 
   return (
     <div className="DuchContainer">
-
 
       <div className='formEdge'>
         <h3>Dutch Blitz Placar</h3>
@@ -108,8 +112,12 @@ const DutchGame = () => {
           handleCheck={setParticipation}
           round={state.round}
         />
-
       </div>
+
+      <AlertDismissible 
+          erro={msgErro}
+          handleErro={setMsgErro}
+      />
 
       <form onSubmit={handleScore} id="form">
         <div className="accordion" id={"head"}>
@@ -135,22 +143,18 @@ const DutchGame = () => {
 
       <div className="formRodape">
         <div>
-          <a className="link-dark" href="https://www.wikihow.com/Play-Dutch-Blitz" rel="noreferrer" target="_blank">
+          <a className="link-dark" href="https://www.wikihow.com/Play-Dutch-Blitz" rel="noopener noreferrer" target="_blank">
             How to play?
           </a>
         </div>
 
         <div className="imagem">
-            <img src={require(`./../../images/GitHub-Mark-32px.png`)} alt="descricao" />
-            <a className="link-dark" href="https://github.com/walterfcarvalho/react-dutchBlitza-placar" rel="noreferrer" target="_blank">
-              react-dutchBlitz-placar
+            <img src={require(`./../../images/GitHub-Mark-32px.png`)} alt="Logo GitHub" />
+            <a className="link-dark" href="https://github.com/walterfcarvalho/react-dutchBlitza-placar" rel="noopener noreferrer" target="_blank">
+            react-dutchBlitz-placar
             </a>
         </div>
-
-
       </div>
-
-
     </div>
   )
 }

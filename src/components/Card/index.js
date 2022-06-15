@@ -1,11 +1,12 @@
+import React from 'react'
 import './card.css'
-import Input from './Input'
+import Input from '../Input'
 
 const DutchCard = ({ cor, score, handleChange, isEndGame, chave }) => {
 
   return <div className={`dutchCard`}>
 
-        <div className="accordion-item" hidden={!cor.enabled}   >
+        <div data-testid={`accordion-item-${cor.nome}`} className="accordion-item" hidden={!cor.enabled}   >
           <h2 className="accordion-header" id={`head${cor.nome}`}>
             <button className={`accordion-button collapsed ${cor.nome} acbt${cor.nome}`} type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${cor.nome}`} aria-expanded="true" aria-controls={`collapse${cor.nome}`}>
 
