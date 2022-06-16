@@ -25,16 +25,16 @@ const DutchGame = () => {
 
   const [state, setState] = useState({ red: { ...itemPlacar }, green: { ...itemPlacar }, yellow: { ...itemPlacar }, blue: { ...itemPlacar }, round: 1, endGame: false })
   const [cores, setCores] = useState([...coresBase])
-  const [msgErro, setMsgErro] = useState({show:false, text: ""})
+  const [msgErro, setMsgErro] = useState("")
 
   function setParticipation(e, index) {
     const ischeck = e.target.checked
 
+    setMsgErro("")
+
     if (cores.filter(cor => cor.enabled === true).length === 2 && !ischeck) {
-      setMsgErro({show:true, text: 'Should have two/three/four playes'})
+      setMsgErro("Should have two/three/four playes")
       return
-    } else {
-      setMsgErro({show:false, text: ''})
     }
 
     const aux = Object.assign([], cores)
@@ -52,13 +52,13 @@ const DutchGame = () => {
 
     let err = ""
 
+    setMsgErro("")
+
     cores.forEach(cor => ((valor[cor.nome].bp === "" || valor[cor.nome].dp === "") && cor.enabled) ? err += `Fullfill ${cor.nome} fields. ` : "")
     if (err.length > 0) {
-      setMsgErro({show:true, text: err })
+      setMsgErro(err)
       return
-    } else {
-      setMsgErro({show:false, text: "" })
-    }
+    }  
 
     cores.forEach(cor => {
       valor[cor.nome].score += parseInt(valor[cor.nome].bp) - parseInt(valor[cor.nome].dp)
@@ -100,7 +100,7 @@ const DutchGame = () => {
       <div className='formEdge'>
         <h3>Dutch Blitz Placar</h3>
 
-        <input className="btn btn-light btn-sm button-topo" type="submit" value="New" onClick={newGame} />
+        <input className="btn btn-light btn-sm button-topo" type="submit" value="New" onClick={newGame} data-testid="button-new"/>
       </div>
 
 
@@ -119,7 +119,7 @@ const DutchGame = () => {
           handleErro={setMsgErro}
       />
 
-      <form onSubmit={handleScore} id="form">
+      <form onSubmit={handleScore} id="form" data-testid="form">
         <div className="accordion" id={"head"}>
 
           {cores.map((cor, index) =>
@@ -133,7 +133,7 @@ const DutchGame = () => {
             </div>
           )}
 
-          <div className="formEdge">
+          <div className="formEdge" data-testid="submit">
             <input className="btn btn-light btn-sm" type="submit" value="Count" />
           </div>
 

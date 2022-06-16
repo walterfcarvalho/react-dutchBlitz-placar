@@ -1,15 +1,25 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Alert from 'react-bootstrap/Alert'
 
-const  AlertDismissible = ({erro, handleErro}) => {
+const AlertDismissible = ({erro, handleErro}) => {
 
-  if (erro.show) {
+  if (erro) {
     return (
-      <Alert variant="secondary" onClose={() => handleErro({show:false, text: "" })} dismissible>
-        <p> {erro.text}</p>
+      <Alert data-testid="alertdismissible" variant="secondary" onClose={handleErro} dismissible>
+        <p> {erro}</p>
       </Alert>
     );
   }
-  return <div> </div> 
+  return <div data-testid="alertdismissible-empty"> </div> 
 }
+
+AlertDismissible.defaultProps = {
+  erro: false
+}
+
+AlertDismissible.propTypes = {
+  conta: PropTypes.string,
+}
+
 export default AlertDismissible
