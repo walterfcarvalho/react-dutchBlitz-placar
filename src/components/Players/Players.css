@@ -1,7 +1,7 @@
 .listaPlayers{
   display:flex;
-  flex-direction: row ;
-  justify-content: space-between;
+  flex-direction: column;
+  padding: 13px;
 }
 
 .form-check {
