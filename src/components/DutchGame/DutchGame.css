@@ -50,7 +50,6 @@ form {
   height: 120px;
   background-color: white;
 }
-
 .formLink {
   display: flex;
   flex-direction: row;
@@ -94,4 +93,28 @@ input[type="submit"] {
   border-radius: 20px;
   border: 2px solid black;
   padding: 5px 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .contentWeapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .formEdge {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .formEdge input {
+    margin: 30px;
+  }
+  .inicio {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  .accordion {
+    margin-top: 12px;
+  gap: 30px;
+  }
 }
