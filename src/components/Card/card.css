@@ -13,7 +13,7 @@
 }
 
 img {
-  max-width: 70px !important;
+  max-width: 70px;
   border-radius: 10px;
 }
 
@@ -33,4 +33,14 @@ img {
 .accordion-item {
   background-color: transparent;
   border: none;
+}
+
+@media screen and (max-width: 600px){
+  .img{
+    display: flex;
+    flex-direction: column;
+  }
+  .accordion-button {
+    flex-direction: row;
+  }
 }

@@ -1,5 +1,5 @@
-.listaPlayers{
-  display:flex;
+.listaPlayers {
+  display: flex;
   flex-direction: column;
   padding: 13px;
 }
@@ -8,11 +8,11 @@
   margin: 5px;
 }
 
-@media only screen and (max-width: 600px) {
-  .listaPlayers{
-    display:flex;
+@media screen and (max-width: 600px) {
+  .listaPlayers {
     flex-direction: row;
-    flex-wrap: wrap;
     padding-bottom: 2px;
+    width: 317px;
+    height: 50px;
   }
 }

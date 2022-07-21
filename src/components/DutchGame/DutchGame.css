@@ -99,22 +99,28 @@ input[type="submit"] {
   .contentWeapper {
     display: flex;
     flex-direction: column;
+    padding: 20px;
   }
   .formEdge {
     display: flex;
     flex-wrap: wrap;
+    height: 60px;
   }
   .formEdge input {
-    margin: 30px;
+    margin: 10px;
   }
   .inicio {
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
     align-items: center;
   }
   .accordion {
     margin-top: 12px;
-  gap: 30px;
+    gap: 10px;
+    flex-direction: column;
+    display: flex;
+  }
+  .DuchContainer {
+    height: 100vh;
   }
 }
