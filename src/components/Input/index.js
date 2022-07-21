@@ -15,7 +15,8 @@ const Input = ({
       <input
         min={0}
         max={99}
-        className="bpdp"
+        data-testid={`input-${color}-${inputLabel}`}
+        className={`${color} bpdp`}
         id={`${color}-${tpOp}`}
         type="number"
         value={score ? score : ""}

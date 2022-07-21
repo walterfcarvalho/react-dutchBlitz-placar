@@ -73,6 +73,7 @@ const DutchCard = ({ cor, score, handleChange, isEndGame, chave }) => {
           className="imgwinner"
           src={require(`./../../images/crown.png`)}
           alt="winner"
+          data-testid={`winner-${cor.nome}`}
         />
       ) : null}
     </div>

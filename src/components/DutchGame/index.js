@@ -30,16 +30,16 @@ const DutchGame = () => {
     endGame: false,
   });
   const [cores, setCores] = useState([...coresBase]);
-  const [msgErro, setMsgErro] = useState({ show: false, text: "" });
+  const [msgErro, setMsgErro] = useState("");
 
   function setParticipation(e, index) {
     const ischeck = e.target.checked;
 
+    setMsgErro("");
+
     if (cores.filter((cor) => cor.enabled === true).length === 2 && !ischeck) {
-      setMsgErro({ show: true, text: "Should have two/three/four playes" });
+      setMsgErro("Should have two/three/four playes");
       return;
-    } else {
-      setMsgErro({ show: false, text: "" });
     }
 
     const aux = Object.assign([], cores);
@@ -56,16 +56,16 @@ const DutchGame = () => {
 
     let err = "";
 
+    setMsgErro("");
+
     cores.forEach((cor) =>
       (valor[cor.nome].bp === "" || valor[cor.nome].dp === "") && cor.enabled
         ? (err += `Fullfill ${cor.nome} fields. `)
         : ""
     );
     if (err.length > 0) {
-      setMsgErro({ show: true, text: err });
+      setMsgErro(err);
       return;
-    } else {
-      setMsgErro({ show: false, text: "" });
     }
 
     cores.forEach((cor) => {
@@ -116,38 +116,68 @@ const DutchGame = () => {
       <div className="formEdge">
         <h3>Dutch Blitz Placar</h3>
 
-        <input type="submit" value="New" onClick={newGame} />
+        <input
+          className="btn btn-light btn-sm button-topo"
+          type="submit"
+          value="New"
+          onClick={newGame}
+          data-testid="button-new"
+        />
       </div>
 
-      <div className="contentWeapper">
-        <div className="inicio">
-          <div className="round"> Round: {state.round}</div>
-          <PLayers
-            cores={cores}
-            handleCheck={setParticipation}
-            round={state.round}
-          />
+      <div className="inicio">
+        <span>Round: {state.round}</span>
+
+        <PLayers
+          cores={cores}
+          handleCheck={setParticipation}
+          round={state.round}
+        />
+      </div>
+
+      <AlertDismissible erro={msgErro} handleErro={setMsgErro} />
+
+      <form onSubmit={handleScore} id="form" data-testid="form">
+        <div className="accordion" id={"head"}>
+          {cores.map((cor, index) => (
+            <div key={index}>
+              <DutchCard
+                cor={cor}
+                score={state[cor.nome]}
+                handleChange={handleChange}
+                isEndGame={state.endGame}
+              />
+            </div>
+          ))}
+
+          <div className="formEdge" data-testid="submit">
+            <input
+              className="btn btn-light btn-sm"
+              type="submit"
+              value="Count"
+            />
+          </div>
         </div>
+      </form>
 
-        <AlertDismissible erro={msgErro} handleErro={setMsgErro} />
-        <form onSubmit={handleScore} id="form">
-          <div className="accordion" id={"head"}>
-            {cores.map((cor, index) => (
-              <div key={index}>
-                <DutchCard
-                  cor={cor}
-                  score={state[cor.nome]}
-                  handleChange={handleChange}
-                  isEndGame={state.endGame}
-                />
-              </div>
-            ))}
-          </div>
-          <div className="buttonContainer">
-            <input type="submit" value="Count" />
-          </div>
-        </form>
-      </div>
+      <AlertDismissible erro={msgErro} handleErro={setMsgErro} />
+      <form onSubmit={handleScore} id="form">
+        <div className="accordion" id={"head"}>
+          {cores.map((cor, index) => (
+            <div key={index}>
+              <DutchCard
+                cor={cor}
+                score={state[cor.nome]}
+                handleChange={handleChange}
+                isEndGame={state.endGame}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="buttonContainer">
+          <input type="submit" value="Count" />
+        </div>
+      </form>
 
       <div className="formLink">
         <div>
