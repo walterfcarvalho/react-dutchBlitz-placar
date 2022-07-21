@@ -1,24 +1,44 @@
-
 .DuchContainer {
-  display:flex;
+  display: flex;
   flex-direction: column;
+  background: #fcf3e3;
+}
+
+.contentWeapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
 }
 
 .inicio {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
+  flex-direction: column;
+  background: white;
+  font-weight: 200;
 }
 
-span {
-  margin-right: 20px;
+.round {
+  display: flex;
+  flex-direction: row;
+  padding: 3px 12px;
 }
 
 form {
-  margin:0px;
+  margin: 0px;
   padding: 0px;
   height: 90%;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  grid-gap: 90px;
+  gap: 90px;
+  max-width: 600px;
+  justify-content: center;
 }
 
 .formEdge {
@@ -26,25 +46,81 @@ form {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: green;
+  width: 100vw;
+  height: 120px;
+  background-color: white;
 }
-
-.formRodape {
+.formLink {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
-  margin:10px;
+  margin: 10px;
 }
 
 .formEdge h3 {
-  margin: 0px;
-  margin-left: 5px;
-  padding: 5px;
-  color: yellow;
+  padding: 3px;
+  color: black;
+  padding-top: 5px;
+  font-weight: 200;
 }
 
 .formEdge input {
-  margin: 5px;
-  width: 78px !important;
+  margin: 49px;
+  width: 78px;
+  border: whitesmoke 2px solid;
+}
+
+.formBottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 120px;
+  border-bottom: solid 1px grey;
+  background-color: rgb(19, 3, 11);
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+input[type="submit"] {
+  background: #fcd250;
+  border-radius: 20px;
+  border: 2px solid black;
+  padding: 5px 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .contentWeapper {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .formEdge {
+    display: flex;
+    flex-wrap: wrap;
+    height: 60px;
+  }
+  .formEdge input {
+    margin: 10px;
+  }
+  .inicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .accordion {
+    margin-top: 12px;
+    gap: 10px;
+    flex-direction: column;
+    display: flex;
+  }
+  .DuchContainer {
+    height: 100vh;
+  }
 }

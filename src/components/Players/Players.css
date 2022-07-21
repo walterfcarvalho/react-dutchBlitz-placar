@@ -1,9 +1,18 @@
-.listaPlayers{
-  display:flex;
-  flex-direction: row ;
-  justify-content: space-between;
+.listaPlayers {
+  display: flex;
+  flex-direction: column;
+  padding: 13px;
 }
 
 .form-check {
   margin: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .listaPlayers {
+    flex-direction: row;
+    padding-bottom: 2px;
+    width: 317px;
+    height: 50px;
+  }
 }
