@@ -63,13 +63,13 @@ const DutchCard = ({ cor, score, handleChange, isEndGame, chave }) => {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            <strong>History:</strong> {score.history}
+            <span>History:</span> {score.history}
           </div>
         </div>
       </div>
 
         
-        {score.winner ? <img className='imgwinner' src={require(`./../../images/crown.png`)} alt="winner" /> : null}
+        {score.winner ? <img className='imagem' src={require(`./../../images/crown2.png`)} alt="winner" /> : null}
 
     </div>
   );

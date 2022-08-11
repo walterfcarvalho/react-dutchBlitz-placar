@@ -28,15 +28,13 @@
 form {
   margin: 0px;
   padding: 0px;
-  height: 90%;
 }
 
 .accordion {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  grid-gap: 90px;
-  gap: 90px;
+  grid-gap: 50px;
   max-width: 600px;
   justify-content: center;
 }
@@ -46,9 +44,9 @@ form {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 120px;
   background-color: white;
+  padding: 0px;
+  margin: 0px;
 }
 .formLink {
   display: flex;
@@ -59,14 +57,13 @@ form {
 }
 
 .formEdge h3 {
-  padding: 3px;
   color: black;
-  padding-top: 5px;
   font-weight: 200;
 }
 
 .formEdge input {
-  margin: 49px;
+  margin: 10px;
+  padding: 0px;
   width: 78px;
   border: whitesmoke 2px solid;
 }
@@ -99,13 +96,15 @@ input[type="submit"] {
   .contentWeapper {
     display: flex;
     flex-direction: column;
+    padding: 5px;
+    margin: 5px;
   }
   .formEdge {
     display: flex;
     flex-wrap: wrap;
   }
   .formEdge input {
-    margin: 30px;
+    margin: 10px;
   }
   .inicio {
     display: flex;
@@ -115,6 +114,6 @@ input[type="submit"] {
   }
   .accordion {
     margin-top: 12px;
-  gap: 30px;
+    gap: 10px;
   }
 }

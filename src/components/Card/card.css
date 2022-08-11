@@ -17,17 +17,11 @@ img {
   border-radius: 10px;
 }
 
-.imgwinner {
-  max-width: 100px;
-  border-radius: 10px;
-  margin: 10px;
-}
-
 .accordion-button {
   padding: 5px;
   background-color: transparent;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .accordion-item {

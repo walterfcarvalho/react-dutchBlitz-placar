@@ -30,16 +30,16 @@ const DutchGame = () => {
     endGame: false,
   });
   const [cores, setCores] = useState([...coresBase]);
-  const [msgErro, setMsgErro] = useState({ show: false, text: "" });
+  const [msgError, setMsgError] = useState({ show: false, text: "" });
 
   function setParticipation(e, index) {
     const ischeck = e.target.checked;
 
     if (cores.filter((cor) => cor.enabled === true).length === 2 && !ischeck) {
-      setMsgErro({ show: true, text: "Should have two/three/four playes" });
+      setMsgError({ show: true, text: "Should have two/three/four playes" });
       return;
     } else {
-      setMsgErro({ show: false, text: "" });
+      setMsgError({ show: false, text: "" });
     }
 
     const aux = Object.assign([], cores);
@@ -62,10 +62,10 @@ const DutchGame = () => {
         : ""
     );
     if (err.length > 0) {
-      setMsgErro({ show: true, text: err });
+      setMsgError({ show: true, text: err });
       return;
     } else {
-      setMsgErro({ show: false, text: "" });
+      setMsgError({ show: false, text: "" });
     }
 
     cores.forEach((cor) => {
@@ -129,7 +129,7 @@ const DutchGame = () => {
           />
         </div>
 
-        <AlertDismissible erro={msgErro} handleErro={setMsgErro} />
+        <AlertDismissible erro={msgError} handleErro={setMsgError} />
         <form onSubmit={handleScore} id="form">
           <div className="accordion" id={"head"}>
             {cores.map((cor, index) => (
