@@ -1,46 +1,36 @@
-
 .dutchCard {
-  display:flex;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  padding: .5px !important;
-  margin: 0px !important;
 }
 
-.scores{
+.scores {
   flex-grow: 1;
-  display:flex;
+  display: flex;
   justify-content: center;
-  margin: 5px;
+  margin: 6px;
   width: 75%;
 }
 
-img{
+img {
   max-width: 70px !important;
   border-radius: 10px;
 }
 
 .imgwinner {
-  max-width: 100px !important;
-  border-radius: 10px;  
+  max-width: 100px;
+  border-radius: 10px;
   margin: 10px;
 }
 
-.red {
-  background-color: #ed7d64;
-}
-
-.blue {
-  background-color: blue; 
-}
-
-.yellow {
-  background-color: yellow;
-}
-
-.green{
-  background-color: green;
-} 
-
-.accordion-button{
+.accordion-button {
   padding: 5px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-item {
+  background-color: transparent;
+  border: none;
 }
