@@ -15,11 +15,12 @@ const AlertDismissible = ({ erro, handleErro }) => {
 }
 
 AlertDismissible.defaultProps = {
-  erro: { show: false, text: "" }
-}
+  erro: PropTypes.shape({
+    show: PropTypes.bool,
+    text: PropTypes.string
+  }),
 
-// AlertDismissible.propTypes = {
-//   conta: PropTypes.string,
-// }
+  handleErro: PropTypes.func
+}
 
 export default AlertDismissible
