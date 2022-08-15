@@ -17,6 +17,7 @@ const Input = ({
         max={99}
         className="bpdp"
         id={`${color}-${tpOp}`}
+        data-testid={`input-${color}-${tpOp}`}
         type="number"
         value={score ? score : ""}
         onChange={handleChange}

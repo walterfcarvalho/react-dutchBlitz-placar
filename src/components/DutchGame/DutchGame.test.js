@@ -17,20 +17,13 @@ describe('Testing clicks...', () => {
   it('Check toogle player..', () => {
     render(<DutchGame />)
 
-    const checkYellow = screen.getByTestId("checkbox-yellow")
-    const cardRed = screen.getByTestId("accordion-item-red")
-    const cardYellow = screen.getByTestId("accordion-item-yellow")
+    fireEvent.click(screen.getByTestId("checkbox-yellow"))
 
-    fireEvent.click(checkYellow)
+    expect(screen.getByTestId("accordion-item-yellow")).not.toBeVisible()
 
-    expect(cardRed).toBeVisible()
+    fireEvent.click( screen.getByTestId("checkbox-yellow") )
 
-    expect(cardYellow).not.toBeVisible()
-
-    fireEvent.click(checkYellow)
-
-    expect(cardYellow).toBeVisible()
-
+    expect( screen.getByTestId("accordion-item-yellow") ).toBeVisible()
   })
 
   it('Check two or more players....', async () => {
@@ -45,26 +38,25 @@ describe('Testing clicks...', () => {
     fireEvent.click(checkYellow)
     fireEvent.click(checkYBlue)
 
-    expect(screen.getByTestId('alertdismissible')).toBeInTheDocument()
+    expect(screen.getByTestId('alertDismissible')).toBeInTheDocument()
   })
 
 
   it('Check if all fields are fullfiled', async () => {
     render(<DutchGame />)
 
+    fireEvent.change(screen.getByTestId('input-yellow-bp'), {target:{value:10}})
+    fireEvent.change(screen.getByTestId('input-yellow-dp'), {target:{value:0}})
 
-    fireEvent.change(screen.getByTestId('input-yellow-+'), {target:{value:10}})
-    fireEvent.change(screen.getByTestId('input-yellow--'), {target:{value:0}})
+    fireEvent.change(screen.getByTestId('input-red-bp'), {target:{value:10}})
+    fireEvent.change(screen.getByTestId('input-red-dp'), {target:{value:0}})
 
-    fireEvent.change(screen.getByTestId('input-red-+'), {target:{value:10}})
-    fireEvent.change(screen.getByTestId('input-red--'), {target:{value:0}})
-
-    fireEvent.change(screen.getByTestId('input-green-+'), {target:{value:10}})
-    fireEvent.change(screen.getByTestId('input-green--'), {target:{value:0}})
+    fireEvent.change(screen.getByTestId('input-green-bp'), {target:{value:10}})
+    fireEvent.change(screen.getByTestId('input-green-dp'), {target:{value:0}})
 
     await fireEvent.submit(screen.getByTestId("submit"))
 
-    expect(screen.getByTestId('alertdismissible')).toBeInTheDocument()
+    //expect(screen.getByTestId('alertDismissible')).toBeInTheDocument()
 
     expect(screen.getByText('Fullfill blue fields.')).toBeInTheDocument()
 
@@ -73,17 +65,17 @@ describe('Testing clicks...', () => {
   it('Check then end of the game',  () => {
     render(<DutchGame />)
 
-    fireEvent.change(screen.getByTestId('input-yellow-+'), {target:{value:75}})
-    fireEvent.change(screen.getByTestId('input-yellow--'), {target:{value:0}})
+    fireEvent.change(screen.getByTestId('input-yellow-bp'), {target:{value:75}})
+    fireEvent.change(screen.getByTestId('input-yellow-dp'), {target:{value:0}})
 
-    fireEvent.change(screen.getByTestId('input-red-+'), {target:{value:10}})
-    fireEvent.change(screen.getByTestId('input-red--'), {target:{value:2}})
+    fireEvent.change(screen.getByTestId('input-red-bp'), {target:{value:10}})
+    fireEvent.change(screen.getByTestId('input-red-dp'), {target:{value:2}})
 
-    fireEvent.change(screen.getByTestId('input-green-+'), {target:{value:12}})
-    fireEvent.change(screen.getByTestId('input-green--'), {target:{value:4}})
+    fireEvent.change(screen.getByTestId('input-green-bp'), {target:{value:12}})
+    fireEvent.change(screen.getByTestId('input-green-dp'), {target:{value:4}})
 
-    fireEvent.change(screen.getByTestId('input-blue-+'), {target:{value:10}})
-    fireEvent.change(screen.getByTestId('input-blue--'), {target:{value:6}})
+    fireEvent.change(screen.getByTestId('input-blue-bp'), {target:{value:10}})
+    fireEvent.change(screen.getByTestId('input-blue-dp'), {target:{value:6}})
 
     fireEvent.submit(screen.getByTestId("submit"))
 
@@ -94,31 +86,31 @@ describe('Testing clicks...', () => {
   it('Check creation of a new game', () => {
     render(<DutchGame />)
 
-    fireEvent.change(screen.getByTestId('input-yellow-+'), {target:{value:50}})
-    fireEvent.change(screen.getByTestId('input-yellow--'), {target:{value:0}})
+    fireEvent.change(screen.getByTestId('input-yellow-bp'), {target:{value:50}})
+    fireEvent.change(screen.getByTestId('input-yellow-dp'), {target:{value:0}})
 
-    fireEvent.change(screen.getByTestId('input-red-+'), {target:{value:10}})
-    fireEvent.change(screen.getByTestId('input-red--'), {target:{value:2}})
+    fireEvent.change(screen.getByTestId('input-red-bp'), {target:{value:10}})
+    fireEvent.change(screen.getByTestId('input-red-dp'), {target:{value:2}})
 
-    fireEvent.change(screen.getByTestId('input-green-+'), {target:{value:12}})
-    fireEvent.change(screen.getByTestId('input-green--'), {target:{value:4}})
+    fireEvent.change(screen.getByTestId('input-green-bp'), {target:{value:12}})
+    fireEvent.change(screen.getByTestId('input-green-dp'), {target:{value:4}})
 
-    fireEvent.change(screen.getByTestId('input-blue-+'), {target:{value:10}})
-    fireEvent.change(screen.getByTestId('input-blue--'), {target:{value:6}})
+    fireEvent.change(screen.getByTestId('input-blue-bp'), {target:{value:10}})
+    fireEvent.change(screen.getByTestId('input-blue-dp'), {target:{value:6}})
 
     fireEvent.submit(screen.getByTestId("submit"))
 
-    expect(screen.getByTestId('input-yellow-Total').value).toBe("50")
-    expect(screen.getByTestId('input-red-Total').value).toBe("8")
-    expect(screen.getByTestId('input-green-Total').value).toBe("8")
-    expect(screen.getByTestId('input-blue-Total').value).toBe("4")
+    expect(screen.getByTestId('input-yellow-total').value).toBe("50")
+    expect(screen.getByTestId('input-red-total').value).toBe("8")
+    expect(screen.getByTestId('input-green-total').value).toBe("8")
+    expect(screen.getByTestId('input-blue-total').value).toBe("4")
     
     fireEvent.click(screen.getByTestId("button-new"))
 
-    expect(screen.getByTestId('input-yellow-Total').value).toBe("")
-    expect(screen.getByTestId('input-red-Total').value).toBe("")
-    expect(screen.getByTestId('input-green-Total').value).toBe("")
-    expect(screen.getByTestId('input-blue-Total').value).toBe("")
+    expect(screen.getByTestId('input-yellow-total').value).toBe("")
+    expect(screen.getByTestId('input-red-total').value).toBe("")
+    expect(screen.getByTestId('input-green-total').value).toBe("")
+    expect(screen.getByTestId('input-blue-total').value).toBe("")
     
   })
 

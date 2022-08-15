@@ -4,19 +4,15 @@ import Alert from 'react-bootstrap/Alert'
 
 const AlertDismissible = ({ erro, handleErro }) => {
 
-  if (erro.show) {
-    return (erro.show &&
-      <Alert data-testid="alertdismissible" variant="secondary" onClose={handleErro} dismissible>
-        <p> {erro.text}</p>
-      </Alert>
-    );
-  }
-  return <div data-testid="alertdismissible-empty"> </div>
+  return erro.text 
+  ? <Alert data-testid="alertDismissible" variant="secondary" onClose={handleErro} dismissible>
+      <p> {erro.text}</p>
+    </Alert>
+  : <div data-testid="alertDismissible-empty"> </div>
 }
 
 AlertDismissible.defaultProps = {
   erro: PropTypes.shape({
-    show: PropTypes.bool,
     text: PropTypes.string
   }),
 

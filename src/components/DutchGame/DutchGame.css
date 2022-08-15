@@ -1,7 +1,15 @@
-.DuchContainer {
+.accordion {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 600px;
+  justify-content: center;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
   flex-direction: column;
-  background: #fcf3e3;
 }
 
 .contentWeapper {
@@ -12,31 +20,15 @@
   padding: 50px;
 }
 
-.inicio {
+.duchContainer {
   display: flex;
   flex-direction: column;
-  background: white;
-  font-weight: 200;
-}
-
-.round {
-  display: flex;
-  flex-direction: row;
-  padding: 3px 12px;
+  background: #fcf3e3;
 }
 
 form {
   margin: 0px;
   padding: 0px;
-}
-
-.accordion {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  grid-gap: 50px;
-  max-width: 600px;
-  justify-content: center;
 }
 
 .formEdge {
@@ -48,12 +40,17 @@ form {
   padding: 0px;
   margin: 0px;
 }
-.formLink {
+
+
+.formBottom {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: baseline;
-  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 120px;
+  border-bottom: solid 1px grey;
+  background-color: rgb(19, 3, 11);
 }
 
 .formEdge h3 {
@@ -68,21 +65,26 @@ form {
   border: whitesmoke 2px solid;
 }
 
-.formBottom {
+
+.formLink {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 120px;
-  border-bottom: solid 1px grey;
-  background-color: rgb(19, 3, 11);
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 10px;
 }
 
-.buttonContainer {
+.inicio {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  background: white;
+  font-weight: 200;
+}
+
+.round {
+  display: flex;
+  flex-direction: row;
+  padding: 3px 12px;
 }
 
 input[type="submit"] {

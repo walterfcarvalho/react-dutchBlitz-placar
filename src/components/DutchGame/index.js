@@ -1,17 +1,10 @@
-import React, { useState } from "react";
-import DutchCard from "../Card";
-import PLayers from "../Players";
-import AlertDismissible from "../AlertDismissible";
-import "./DutchGame.css";
+import React, { useState } from "react"
+import DutchCard from "../Card"
+import PLayers from "../Players"
+import AlertDismissible from "../AlertDismissible"
+import "./DutchGame.css"
 
 const DutchGame = () => {
-  const coresBase = [
-    { nome: "yellow", enabled: true },
-    { nome: "red", enabled: true },
-    { nome: "green", enabled: true },
-    { nome: "blue", enabled: true },
-  ];
-
   const itemPlacar = {
     onGame: true,
     bp: "",
@@ -19,132 +12,127 @@ const DutchGame = () => {
     score: 0,
     history: "",
     winner: false,
-  };
+  }
 
-  const [state, setState] = useState({
-    red: { ...itemPlacar },
-    green: { ...itemPlacar },
-    yellow: { ...itemPlacar },
-    blue: { ...itemPlacar },
-    round: 1,
-    endGame: false,
-  });
-  const [cores, setCores] = useState([...coresBase]);
-  const [msgError, setMsgError] = useState({ show: false, text: "" });
+  const coresBase = [
+    { nome: "yellow", enabled: true, ...itemPlacar },
+    { nome: "red", enabled: true, ...itemPlacar },
+    { nome: "green", enabled: true, ...itemPlacar },
+    { nome: "blue", enabled: true, ...itemPlacar },
+  ]
+
+  const [myState, setMyState] = useState({round:1, endGame:false, colors:[...coresBase]})
+
+  const [msgError, setMsgError] = useState({text: "" })
 
   function setParticipation(e, index) {
-    const ischeck = e.target.checked;
+    const ischeck = e.target.checked
+    
+    setMsgError({text: "" })
 
-    if (cores.filter((cor) => cor.enabled === true).length === 2 && !ischeck) {
-      setMsgError({ show: true, text: "Should have two/three/four playes" });
-      return;
-    } else {
-      setMsgError({ show: false, text: "" });
+    if ( myState.colors.filter((cor) => cor.enabled === true).length === 2 && !ischeck) {
+      setMsgError({text: "Should have two/three/four playes" })
+      return
     }
 
-    const aux = Object.assign([], cores);
+    const aux = Object.assign([], myState)
 
-    aux[index].enabled = ischeck;
+    aux.colors[index].enabled = ischeck
 
-    setCores(aux);
+    setMyState(aux)
   }
 
   function handleScore(event, index) {
-    event.preventDefault();
+    event.preventDefault()
 
-    let valor = Object.assign({}, state);
+    let aux = Object.assign({}, myState)
 
-    let err = "";
+    let err = ""
 
-    cores.forEach((cor) =>
-      (valor[cor.nome].bp === "" || valor[cor.nome].dp === "") && cor.enabled
+    aux.colors.forEach( cor =>
+      ( cor.bp === "" || cor.dp === "" ) && cor.enabled
         ? (err += `Fullfill ${cor.nome} fields. `)
         : ""
-    );
+    )
+
     if (err.length > 0) {
-      setMsgError({ show: true, text: err });
-      return;
-    } else {
-      setMsgError({ show: false, text: "" });
+      setMsgError({text: err })
+      return
     }
 
-    cores.forEach((cor) => {
-      valor[cor.nome].score +=
-        parseInt(valor[cor.nome].bp) - parseInt(valor[cor.nome].dp);
-      valor[cor.nome].history = valor[cor.nome].history.concat(
-        `(+${valor[cor.nome].bp}-${valor[cor.nome].dp})`
-      );
-      valor[cor.nome].bp = "";
-      valor[cor.nome].dp = "";
+    aux.colors.forEach( cor => {
+      cor.score +=
+        parseInt(cor.bp) - parseInt(cor.dp)
+      cor.history = cor.history.concat(
+        `(+${cor.bp}-${cor.dp})`
+      )
+      cor.bp = ""
+      cor.dp = ""
 
-      if (valor[cor.nome].score >= 75) {
-        valor.endGame = true;
-        valor[cor.nome].winner = true;
+      if (cor.score >= 75) {
+        aux.endGame = true
+        cor.winner = true
       }
-    });
+    })
 
-    valor.round++;
+    aux.round++
 
-    setState({ ...valor });
+    setMyState({ ...aux })
   }
 
   function handleChange(e) {
-    let corCampo = e.target.id.split("-");
+    let values = e.target.id.split("-")
 
-    let valor = state[corCampo[0]];
+    let idx = myState.colors.findIndex( color => color.nome === values[0] )
 
-    valor[corCampo[1]] = e.target.value;
+    let aux = Object.assign({}, myState)
 
-    setState({ ...state, [corCampo[0]]: valor });
+    aux.colors[idx][values[1]] = (e.target.value)
+
+    setMyState(aux)
   }
 
   function newGame(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    setState({
-      red: { ...itemPlacar },
-      green: { ...itemPlacar },
-      yellow: { ...itemPlacar },
-      blue: { ...itemPlacar },
-      round: 1,
-      endGame: false,
-    });
+    setMyState({round:1, endGame:false, colors:[...coresBase]})
   }
 
   return (
-    <div className="DuchContainer">
+    <div className="duchContainer">
       <div className="formEdge">
         <h3>Dutch Blitz Placar</h3>
 
-        <input type="submit" value="New" onClick={newGame} />
+        <input data-testid="button-new" type="submit" value="New" onClick={newGame} />
       </div>
 
       <div className="contentWeapper">
         <div className="inicio">
-          <div className="round"> Round: {state.round}</div>
+          <div className="round"> Round: { myState.round }</div>
           <PLayers
-            cores={cores}
+            cores={ myState.colors }
             handleCheck={setParticipation}
-            round={state.round}
+            round={ myState.round}
           />
         </div>
 
         <AlertDismissible erro={msgError} handleErro={setMsgError} />
+
         <form onSubmit={handleScore} id="form">
           <div className="accordion" id={"head"}>
-            {cores.map((cor, index) => (
+            { myState.colors.sort( (a,b) => a.score < b.score ? 1 : -1 )
+            .map((infoCard, index) => (
               <div key={index}>
                 <DutchCard
-                  cor={cor}
-                  score={state[cor.nome]}
+                  infoCard={infoCard}
                   handleChange={handleChange}
-                  isEndGame={state.endGame}
+                  isEndGame={myState.endGame}
                 />
               </div>
             ))}
           </div>
           <div className="buttonContainer">
-            <input type="submit" value="Count" />
+            <input data-testid="submit" type="submit" value="Count" />
           </div>
         </form>
       </div>
@@ -177,7 +165,7 @@ const DutchGame = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DutchGame;
+export default DutchGame
