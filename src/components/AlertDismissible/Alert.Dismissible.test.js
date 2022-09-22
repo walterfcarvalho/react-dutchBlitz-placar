@@ -11,12 +11,12 @@ describe('Check component...', () => {
   let funcTeste = () => { erro = ""}
 
   it('Check creation component...', () => {
-    render(<AlertDismissible  erro={ {text:"Msg Erro"} } handleErro={funcTeste}/>)
+    render(<AlertDismissible  erro={"Msg Erro" } handleErro={funcTeste}/>)
     expect(screen.getByTestId('alertDismissible')).toBeInTheDocument()
   })
 
   it('Check creation component without message...', () => {
-    render(<AlertDismissible  erro={ {text: ""} } handleErro={funcTeste}/>)
+    render(<AlertDismissible  erro={""} handleErro={funcTeste}/>)
     expect(screen.getByTestId('alertDismissible-empty')).toBeInTheDocument()
   })
 

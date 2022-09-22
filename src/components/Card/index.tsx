@@ -1,8 +1,9 @@
-import React from "react";
-import "./card.css";
-import Input from "../Input";
+import React from "react"
+import "./card.css"
+import Input from "../Input"
+import {IDuchCard} from '../../interfaces'
 
-const DutchCard = ({ infoCard, handleChange, isEndGame }) => {
+const DutchCard = ({ infoCard, handleInputValue, isEndGame }: IDuchCard ) => {
   return (
     <div className="dutchCard">
       <div
@@ -15,7 +16,7 @@ const DutchCard = ({ infoCard, handleChange, isEndGame }) => {
             className={`accordion-button collapsed acbt`}
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target={`#collapse${infoCard.nome}`}
+            data-bs-target={`#collapse${infoCard.nome }`}
             aria-expanded="true"
             aria-controls={`collapse${infoCard.nome}`}
           >
@@ -32,7 +33,7 @@ const DutchCard = ({ infoCard, handleChange, isEndGame }) => {
                 tpOp={"bp"}
                 color={infoCard.nome}
                 score={infoCard.bp}
-                handleChange={handleChange}
+                handleChange={handleInputValue}
                 isDisabled={isEndGame}
               />
 
@@ -41,7 +42,7 @@ const DutchCard = ({ infoCard, handleChange, isEndGame }) => {
                 tpOp={"dp"}
                 color={infoCard.nome}
                 score={infoCard.dp}
-                handleChange={handleChange}
+                handleChange={handleInputValue}
                 isDisabled={isEndGame}
               />
 
@@ -50,7 +51,7 @@ const DutchCard = ({ infoCard, handleChange, isEndGame }) => {
                 tpOp={"total"}
                 color={infoCard.nome}
                 score={infoCard.score}
-                handleChange={handleChange}
+                handleChange={handleInputValue}
                 isDisabled={true}
               />
             </div>

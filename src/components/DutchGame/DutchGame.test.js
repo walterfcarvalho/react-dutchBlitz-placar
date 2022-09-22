@@ -56,8 +56,6 @@ describe('Testing clicks...', () => {
 
     await fireEvent.submit(screen.getByTestId("submit"))
 
-    //expect(screen.getByTestId('alertDismissible')).toBeInTheDocument()
-
     expect(screen.getByText('Fullfill blue fields.')).toBeInTheDocument()
 
   })
