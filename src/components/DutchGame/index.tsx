@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from "react"
 import DutchCard from "../Card/index"
 import PLayers from "../Players"
+import Footer  from '../Footer/footer'
 import AlertDismissible from "../AlertDismissible"
 import "./DutchGame.css"
 import { IPLacar } from '../../interfaces/index'
@@ -72,12 +73,12 @@ const DutchGame = () => {
 
     aux.colors.forEach(cor => (
       (cor.bp === 0 || cor.dp === 0) && cor.enabled
-      ? (err += `Fullfill ${cor.nome} fields.`)
+      ? (err += `${cor.nome}, `)
       : ""
     ))
 
     if (err.length > 0) {
-      setMsgError(err)
+      setMsgError(`Inform vales for: ` + err.substring(0, err.length-2).concat('.'))
       return
     }
 
@@ -101,6 +102,7 @@ const DutchGame = () => {
     aux.colors.sort((a, b) => a.score < b.score ? 1 : -1)
 
     setMyState({ ...aux })
+    setMsgError('' )
   }
 
 
@@ -152,33 +154,8 @@ const DutchGame = () => {
         </form>
       </div>
 
-      <div className="formLink">
-        <div>
-          <a
-            className="link-dark"
-            href="https://www.wikihow.com/Play-Dutch-Blitz"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            How to play?
-          </a>
-        </div>
+      <Footer />
 
-        <div className="imagem">
-          <img
-            src={require(`./../../images/GitHub-Mark-32px.png`)}
-            alt="Logo GitHub"
-          />
-          <a
-            className="link-dark"
-            href="https://github.com/walterfcarvalho/react-dutchBlitza-placar"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            react-dutchBlitz-placar
-          </a>
-        </div>
-      </div>
     </div>
   )
 }

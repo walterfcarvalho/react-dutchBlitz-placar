@@ -34,13 +34,12 @@ form {
 .formEdge {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   background-color: white;
   padding: 0px;
   margin: 0px;
 }
-
 
 .formBottom {
   display: flex;
@@ -65,26 +64,18 @@ form {
   border: whitesmoke 2px solid;
 }
 
-
-.formLink {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: baseline;
-  margin: 10px;
-}
-
 .inicio {
+  align-items: center;
   display: flex;
   flex-direction: column;
   background: white;
-  font-weight: 200;
+  font-weight: 100;
 }
 
 .round {
   display: flex;
   flex-direction: row;
-  padding: 3px 12px;
+  margin:0;
 }
 
 input[type="submit"] {

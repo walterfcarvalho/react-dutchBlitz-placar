@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react' 
+import React from 'react' 
 import PropTypes from 'prop-types';
 import './Players.css'
 import { IInfoPlayer } from '../../interfaces'

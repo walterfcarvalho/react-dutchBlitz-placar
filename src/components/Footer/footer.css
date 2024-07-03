@@ -1,0 +1,17 @@
+.indexFooter {
+  /* position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 0px 5px;
+  }
+
+  .github{
+    margin-right: 1em;
+  }
+  
