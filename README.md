@@ -28,3 +28,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
+
+### setup git account 
+this command unset credentian on this machine
+git config --system --unset credential.helper
