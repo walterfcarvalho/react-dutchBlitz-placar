@@ -2,11 +2,11 @@
     position: fixed;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: baseline;
     margin: 0px 5px;
     bottom: 0;
     width: 100%;
     background-color: white;
-
+    padding-top: 5px;
   }

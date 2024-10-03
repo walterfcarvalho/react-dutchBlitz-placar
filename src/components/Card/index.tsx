@@ -1,4 +1,4 @@
-import React from "react"
+// import React from "react"
 import "./card.css"
 import Input from "../Input"
 import {IDuchCard} from '../../interfaces'
@@ -8,7 +8,7 @@ const DutchCard = ({ infoCard, handleInputValue, isEndGame }: IDuchCard ) => {
     <div className= {`dutchCard ${infoCard.winner ? "winner": "" } `}  >
 
       {infoCard.winner  &&
-        <span >winner</span>
+        <span >Winner!!! &#127942;&#127942;&#x1F3C6;</span>
       }
 
       <div
@@ -69,7 +69,7 @@ const DutchCard = ({ infoCard, handleInputValue, isEndGame }: IDuchCard ) => {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            <span>History:</span> {infoCard.history}
+            {infoCard.history}
           </div>
         </div>
       </div>
