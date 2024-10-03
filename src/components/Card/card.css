@@ -13,13 +13,13 @@
 }
 
 img {
-  max-width: 70px !important;
+  max-width: 40px;
   border-radius: 10px;
 }
 
 .accordion-button {
-  padding: 5px;
-  background-color: transparent;
+  padding: 0px;
+  background-color: red;
   display: flex;
   flex-direction: row;
 }
@@ -27,4 +27,9 @@ img {
 .accordion-item {
   background-color: transparent;
   border: none;
+}
+
+.imgCardContainer {
+  display: flex;
+  align-items: center;
 }

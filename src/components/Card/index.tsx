@@ -20,7 +20,7 @@ const DutchCard = ({ infoCard, handleInputValue, isEndGame }: IDuchCard ) => {
             aria-expanded="true"
             aria-controls={`collapse${infoCard.nome}`}
           >
-            <div className="imagem">
+            <div className="s">
               <img
                 src={require(`./../../images/dutchCard${infoCard.nome}.png`)}
                 alt="descricao"

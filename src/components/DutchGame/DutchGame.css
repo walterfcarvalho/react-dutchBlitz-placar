@@ -23,13 +23,15 @@
 .duchContainer {
   display: flex;
   flex-direction: column;
-  background: #fcf3e3;
+  /* background: #fcf3e3; */
+  background: #12ae44;
+  height: 100vh;
 }
 
-form {
+/* naousar-form {
   margin: 0px;
   padding: 0px;
-}
+} */
 
 .formEdge {
   display: flex;
