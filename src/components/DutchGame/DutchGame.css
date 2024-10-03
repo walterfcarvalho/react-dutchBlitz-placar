@@ -12,11 +12,11 @@
   flex-direction: column;
 }
 
-.contentWeapper {
+.contentWrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   padding: 50px;
 }
 

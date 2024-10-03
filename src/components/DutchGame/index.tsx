@@ -120,7 +120,7 @@ const DutchGame = () => {
         <input data-testid="button-new" type="submit" value="New" onClick={newGame} />
       </div>
 
-      <div className="contentWeapper">
+      <div className="contentWrapper">
         <div className="inicio">
           <div className="round"> Round: {myState.round}</div>
           <PLayers
