@@ -1,4 +1,5 @@
 .dutchCard {
+
   flex-direction: row;
   justify-content: center;
   margin-bottom: 2px;
@@ -29,8 +30,7 @@ img {
 }
 
 .accordion-button {
-  padding: 0px;
-  /* background-color: red; */
+  padding-right: 10px;
   display: flex;
   flex-direction: row;
 }
