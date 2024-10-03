@@ -74,14 +74,6 @@ const DutchCard = ({ infoCard, handleInputValue, isEndGame }: IDuchCard ) => {
         </div>
       </div>
         
-      {/* {infoCard.winner 
-        ? <img 
-            data-testid={`winner-${infoCard.nome}`}  
-            src={require(`./../../images/crown2.png`)} 
-            alt="winner" 
-          /> 
-        : null} */}
-
     </div>
   );
 };

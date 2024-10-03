@@ -34,7 +34,7 @@ const DutchGame = () => {
 
     if (myState.colors.filter((cor) => cor.enabled === true).length === 2
       && !isCheck) {
-      setMsgError("Should have two/three/four playes")
+      setMsgError("Should have two or more players")
       return
     }
 
@@ -78,7 +78,7 @@ const DutchGame = () => {
     ))
 
     if (err.length > 0) {
-      setMsgError(`Inform vales for: ` + err.substring(0, err.length-2).concat('.'))
+      setMsgError(`Inform values for: ` + err.substring(0, err.length-2).concat('.'))
       return
     }
 
@@ -133,8 +133,8 @@ const DutchGame = () => {
         <AlertDismissible erro={msgError} handleErro={setMsgError} />
 
         <form onSubmit={handleScore} id="form">
-          <div className="accordion" id={"head"}>
             {myState.colors.map((infoCard, index) => (
+              <div className="accordion" id={"head"}>
                 <div key={index}>
                   <DutchCard
                     infoCard={infoCard}
@@ -142,8 +142,8 @@ const DutchGame = () => {
                     isEndGame={myState.endGame}
                   />
                 </div>
+            </div>
               ))}
-          </div>
           <div className="buttonContainer">
             <input 
               data-testid="submit" 
