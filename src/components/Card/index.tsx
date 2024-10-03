@@ -5,7 +5,12 @@ import {IDuchCard} from '../../interfaces'
 
 const DutchCard = ({ infoCard, handleInputValue, isEndGame }: IDuchCard ) => {
   return (
-    <div className="dutchCard">
+    <div className= {`dutchCard ${infoCard.winner ? "winner": "" } `}  >
+
+      {infoCard.winner  &&
+        <span >winner</span>
+      }
+
       <div
         data-testid={`accordion-item-${infoCard.nome}`}
         className="accordion-item"
@@ -69,9 +74,13 @@ const DutchCard = ({ infoCard, handleInputValue, isEndGame }: IDuchCard ) => {
         </div>
       </div>
         
-      {infoCard.winner 
-        ? <img data-testid={`winner-${infoCard.nome}`}  className='imagem' src={require(`./../../images/crown2.png`)} alt="winner" /> 
-        : null}
+      {/* {infoCard.winner 
+        ? <img 
+            data-testid={`winner-${infoCard.nome}`}  
+            src={require(`./../../images/crown2.png`)} 
+            alt="winner" 
+          /> 
+        : null} */}
 
     </div>
   );

@@ -1,7 +1,18 @@
 .dutchCard {
-  display: flex;
+/* / display: flex; */
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 2px;
+}
+
+.winner{
+  background-color: #ffff00;
+  padding:20px;
+}
+
+span {
+  display: block;
+  text-align: center;
 }
 
 .scores {
@@ -19,7 +30,7 @@ img {
 
 .accordion-button {
   padding: 0px;
-  background-color: red;
+  /* background-color: red; */
   display: flex;
   flex-direction: row;
 }
@@ -32,4 +43,8 @@ img {
 .imgCardContainer {
   display: flex;
   align-items: center;
+}
+
+.accordion-body{
+  background-color: var(--bs-accordion-active-bg);
 }

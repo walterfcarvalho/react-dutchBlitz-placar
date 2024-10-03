@@ -4,6 +4,10 @@ Dutch Blitz® is a highly interactive, highly energetic, family-friendly card ga
 
 Once we need to take notes during the game, I thought I could do an application to do this, using React JS, get some practice, join funny and knowledge.
 
+You can see deployment of this project on
+[https://react-placar-dutch-blitz.vercel.app/]
+
+
 # Available Scripts
 
 In the project directory, you can run:
