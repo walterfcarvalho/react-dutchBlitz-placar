@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react"
 import DutchCard from "../Card/index"
 import PLayers from "../Players"
-import Footer  from '../Footer/footer'
+import Footer from '../Footer/footer'
 import AlertDismissible from "../AlertDismissible"
 import "./DutchGame.css"
 import { IPLacar } from '../../interfaces/index'
@@ -21,6 +21,10 @@ const coresBase = [
   { nome: "red", ...itemPlacar },
   { nome: "green", ...itemPlacar },
   { nome: "blue", ...itemPlacar },
+  { nome: "yellow2", ...itemPlacar },
+  { nome: "red2", ...itemPlacar },
+  { nome: "green2", ...itemPlacar },
+  { nome: "blue2", ...itemPlacar },
 ]
 const DutchGame = () => {
   const [myState, setMyState] = useState<IPLacar>({ round: 1, endGame: false, colors: [...coresBase] })
@@ -38,7 +42,7 @@ const DutchGame = () => {
       return
     }
 
-    const aux = {...myState}
+    const aux = { ...myState }
 
     aux.colors[index].enabled = isCheck
 
@@ -46,39 +50,39 @@ const DutchGame = () => {
   }
 
   const handleInputValue = (e: ChangeEvent<HTMLInputElement>) => {
-    let newValue  = e.target.value
-    
+    let newValue = e.target.value
+
     let fields: string[] = e.target.id.split("-")
-    
+
     setMyState(oldState => (
       {
         ...oldState,
 
-        colors: oldState.colors.map( color => 
-            color.nome === fields[0] 
-          ? {...color, [fields[1]]: newValue }     
-          : color   
+        colors: oldState.colors.map(color =>
+          color.nome === fields[0]
+            ? { ...color, [fields[1]]: newValue }
+            : color
         )
       }
     ))
-   }
+  }
 
 
   const handleScore = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    let aux = {...myState}
+    let aux = { ...myState }
 
     let err = ""
 
     aux.colors.forEach(cor => (
       (cor.bp === 0 || cor.dp === 0) && cor.enabled
-      ? (err += `${cor.nome}, `)
-      : ""
+        ? (err += `${cor.nome}, `)
+        : ""
     ))
 
     if (err.length > 0) {
-      setMsgError(`Inform values for: ` + err.substring(0, err.length-2).concat('.'))
+      setMsgError(`Inform values for: ` + err.substring(0, err.length - 2).concat('.'))
       return
     }
 
@@ -102,7 +106,7 @@ const DutchGame = () => {
     aux.colors.sort((a, b) => a.score < b.score ? 1 : -1)
 
     setMyState({ ...aux })
-    setMsgError('' )
+    setMsgError('')
   }
 
 
@@ -130,9 +134,8 @@ const DutchGame = () => {
           />
         </div>
 
-        <AlertDismissible erro={msgError} handleErro={setMsgError} />
-
         <form onSubmit={handleScore} id="form">
+          <div className="cards-list">
             {myState.colors.map((infoCard, index) => (
               <div className="accordion" id={"head"}>
                 <div key={index}>
@@ -142,18 +145,19 @@ const DutchGame = () => {
                     isEndGame={myState.endGame}
                   />
                 </div>
-            </div>
-              ))}
-          <div className="buttonContainer">
-            <input 
-              data-testid="submit" 
-              type="submit" 
-              value="Count" 
-            />
+              </div>
+            ))}
           </div>
+            <input
+              data-testid="submit"
+              type="submit"
+              value="Count"
+            />
         </form>
       </div>
 
+      <AlertDismissible erro={msgError} handleErro={setMsgError} />
+      
       <Footer />
 
     </div>

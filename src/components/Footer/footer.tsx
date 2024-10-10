@@ -16,10 +16,6 @@ const Footer = () => {
       </div>
 
       <div className="imagem">
-        <img className="github"
-          src={require(`./../../images/GitHub-Mark-32px.png`)}
-          alt="Logo GitHub"
-        />
         <a
           className="link-dark"
           href="https://github.com/walterfcarvalho/react-dutchBlitza-placar"

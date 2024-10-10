@@ -2,7 +2,7 @@
 
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 2px;
+  margin-bottom: 0px;
 }
 
 .winner{
@@ -20,17 +20,19 @@ span {
   flex-grow: 1;
   display: flex;
   justify-content: center;
-  margin: 6px;
+  margin: 0px;
   width: 75%;
 }
 
 img {
-  max-width: 40px;
+  width: 40px;
+  height: 50px;
   border-radius: 10px;
 }
 
 .accordion-button {
-  padding-right: 10px;
+  padding: 0px;
+  padding-right: 5px;
   display: flex;
   flex-direction: row;
 }
